@@ -1,5 +1,7 @@
 package com.tests;
 
+import java.io.File;
+
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,7 +24,9 @@ public class BaseTest
 
 public void setUp(String environemnt) 
 {
-	System.setProperty("webdriver.chrome.driver","D:\\selnium\\chromedriver_win32\\chromedriver.exe");
+	String userdir = System.getProperty("user.dir");
+
+	System.setProperty("webdriver.chrome.driver", userdir + File.separator + "/src/main/resources/drivers/chromedriver.exe");
 	// launch chrome browser
 	driver = new ChromeDriver();
 	// Maximize window

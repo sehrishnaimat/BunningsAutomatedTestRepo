@@ -38,7 +38,7 @@ public class BasePage extends Page
 	{
 		try 
 		{
-		wait.until(ExpectedConditions.invisibilityOf(element));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 		}
 		catch(Exception e)
 		{

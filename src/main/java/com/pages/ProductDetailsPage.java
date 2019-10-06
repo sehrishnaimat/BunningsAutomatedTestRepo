@@ -41,7 +41,7 @@ public class ProductDetailsPage extends BasePage
 	//Actions
 	
 	//Method to get Product ID on Product Details Page, adding product to WishList and navigating to WishList Page
-	public String addProductToWishList() throws InterruptedException
+	public String addProductToWishList() throws InterruptedException 
 	{
 		String productIDDetailsPage = getdetailsPageProductID().getAttribute("content") ;
 		System.out.println("Product id on Details Page is: " +productIDDetailsPage);
@@ -49,13 +49,13 @@ public class ProductDetailsPage extends BasePage
 		// Click on "Add To Wish List" button
 		getAddWishListBtn().click();
 		
-		Thread.sleep(2000);
-		
 		// Calling method "waitForElementPresent" from BasePage to add explicit wait
-		//waitForElementPresent();
-		
+		//waitForElementPresent(getWishListLink());
+	
 		//This will scroll the page till the element is found		
         js.executeScript("arguments[0].scrollIntoView();", getWishListLink());
+        
+        Thread.sleep(2000);
         // Click on "Wish List" Link
 		js.executeScript("arguments[0].click();",getWishListLink());
 		
