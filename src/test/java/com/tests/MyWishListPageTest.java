@@ -26,10 +26,10 @@ public class MyWishListPageTest extends BaseTest
 		//Calling method "clickProduct" from HomePage Class
 		page.getInstance(HomePage.class).clickProduct();	
 		//Calling method "addProductToWishList" from ProductDetailsPage Class and saving result in another String variable
-		String detailsPageProductID = page.getInstance(ProductDetailsPage.class).addProductToWishList();
+		String productDetailsPage = page.getInstance(ProductDetailsPage.class).addProductToWishList();
 		//Calling method "getProductIdWishListPage" from MyWishListPage Class and saving result in another String variable
-		String wishListProductId = page.getInstance(MyWishListPage.class).getProductIdWishListPage();	
+		String productWishListPage = page.getInstance(MyWishListPage.class).getProductIdWishListPage();	
 		//Comparing the product ids returned from method "addProductToWishList" and "getProductIdWishListPage"
-		Assert.assertEquals(detailsPageProductID,wishListProductId);
+		Assert.assertEquals(productDetailsPage,productWishListPage);
 	}
 }

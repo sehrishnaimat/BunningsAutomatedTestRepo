@@ -45,4 +45,10 @@ public class BasePage extends Page
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void scrollDown(WebElement element)
+	{
+		js.executeScript("arguments[0].scrollIntoView();",element);
+	}
 }

@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 
 public class ProductDetailsPage extends BasePage
 {
-	
 	//Page Locators
 	//Locator of Product ID present on Product Details Page
 	private By detailsPageProductID = By.xpath("//span[@class='product-in']");
@@ -46,14 +45,12 @@ public class ProductDetailsPage extends BasePage
 		String productIDDetailsPage = getdetailsPageProductID().getAttribute("content") ;
 		System.out.println("Product id on Details Page is: " +productIDDetailsPage);
 		
+		//This will scroll the page till the element is found	
+		scrollDown(getAddWishListBtn());
 		// Click on "Add To Wish List" button
 		getAddWishListBtn().click();
-		
-		// Calling method "waitForElementPresent" from BasePage to add explicit wait
-		//waitForElementPresent(getWishListLink());
 	
-		//This will scroll the page till the element is found		
-        js.executeScript("arguments[0].scrollIntoView();", getWishListLink());
+        scrollDown(getWishListLink());
         
         Thread.sleep(2000);
         // Click on "Wish List" Link

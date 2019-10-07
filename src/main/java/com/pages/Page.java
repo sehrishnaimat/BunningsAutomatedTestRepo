@@ -21,6 +21,9 @@ public abstract class Page {
 	//Abstract Method to add explicit wait
 	public abstract void waitForElementPresent(WebElement element);
 	
+	//Abstract Method to scroll down until the element is present
+	public abstract void scrollDown(WebElement element);
+	
 	//Method created through Java Generics that returns a new page object
 	public <TPage extends BasePage> TPage getInstance(Class<TPage> pageClass) {
 			try 

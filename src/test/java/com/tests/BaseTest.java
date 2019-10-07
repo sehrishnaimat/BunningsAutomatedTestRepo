@@ -34,7 +34,6 @@ public void setUp(String environemnt)
 	// Delete all cookies
 	driver.manage().deleteAllCookies(); 
 	ConfigFactory.setProperty("env", environemnt); 
-	//creating an instance of the Environment interface & access the property file.
 	testEnvironment = ConfigFactory.create(Environment.class);
 	String envUrl=testEnvironment.url();
 	// Open the URL
