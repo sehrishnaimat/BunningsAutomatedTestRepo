@@ -8,9 +8,8 @@ Browser Used: Chrome
 Pre-Requisites:
 1. Eclipse should be installed
 2. Selenium should be installed
-3. Chrome Driver.exe should be installed
-4. JAVA should be installed
-5. Git Bash should be installed
+3. JAVA should be installed
+4. Git Bash should be installed
 
 Steps to Follow To Run the Program:
 1. Create a directory in your machine 
