@@ -21,15 +21,16 @@ import com.pages.ProductDetailsPage;
 public class MyWishListPageTest extends BaseTest 
 {
 
-	@Test
-	public void myWishListPageTest() throws InterruptedException{
+@Test
+	public void myWishListPageTest()
+	{
 		//Calling method "clickProduct" from HomePage Class
 		page.getInstance(HomePage.class).clickProduct();	
 		//Calling method "addProductToWishList" from ProductDetailsPage Class and saving result in another String variable
-		String productDetailsPage = page.getInstance(ProductDetailsPage.class).addProductToWishList();
+		String productOnDetailsPage = page.getInstance(ProductDetailsPage.class).addProductToWishList();
 		//Calling method "getProductIdWishListPage" from MyWishListPage Class and saving result in another String variable
-		String productWishListPage = page.getInstance(MyWishListPage.class).getProductIdWishListPage();	
+		String productOnWishListPage = page.getInstance(MyWishListPage.class).getProductIdWishListPage();	
 		//Comparing the product ids returned from method "addProductToWishList" and "getProductIdWishListPage"
-		Assert.assertEquals(productDetailsPage,productWishListPage);
+		Assert.assertEquals(productOnDetailsPage,productOnWishListPage);
 	}
 }

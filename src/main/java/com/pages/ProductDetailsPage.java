@@ -1,7 +1,6 @@
 package com.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -40,7 +39,7 @@ public class ProductDetailsPage extends BasePage
 	//Actions
 	
 	//Method to get Product ID on Product Details Page, adding product to WishList and navigating to WishList Page
-	public String addProductToWishList() throws InterruptedException 
+	public String addProductToWishList()  
 	{
 		String productIDDetailsPage = getdetailsPageProductID().getAttribute("content") ;
 		System.out.println("Product id on Details Page is: " +productIDDetailsPage);
@@ -51,8 +50,14 @@ public class ProductDetailsPage extends BasePage
 		getAddWishListBtn().click();
 	
         scrollDown(getWishListLink());
-        
-        Thread.sleep(2000);
+        try 
+        {
+        	Thread.sleep(1000);
+        }
+        catch(Exception e) 
+        {
+        	e.printStackTrace();
+        }
         // Click on "Wish List" Link
 		js.executeScript("arguments[0].click();",getWishListLink());
 		

@@ -19,34 +19,35 @@ public class BaseTest
 	Environment testEnvironment;	
 	
 @BeforeMethod
-
+//TestNG test will access the environment parameter from the testng.xml and use it to read the specific property file.
 @Parameters({"environment"})
 
-public void setUp(String environemnt) 
-{
-	String userdir = System.getProperty("user.dir");
+	public void setUp(String environemnt) 
+	{
+		String userdir = System.getProperty("user.dir");
 
-	System.setProperty("webdriver.chrome.driver", userdir + File.separator + "/src/main/resources/drivers/chromedriver.exe");
-	// launch chrome browser
-	driver = new ChromeDriver();
-	// Maximize window
-	driver.manage().window().maximize(); 
-	// Delete all cookies
-	driver.manage().deleteAllCookies(); 
-	ConfigFactory.setProperty("env", environemnt); 
-	testEnvironment = ConfigFactory.create(Environment.class);
-	String envUrl=testEnvironment.url();
-	// Open the URL
-	driver.get(envUrl);
+		System.setProperty("webdriver.chrome.driver", userdir + File.separator + "/src/main/resources/drivers/chromedriver.exe");
+		// launch chrome browser
+		driver = new ChromeDriver();
+		// Maximize window
+		driver.manage().window().maximize(); 
+		// Delete all cookies
+		driver.manage().deleteAllCookies(); 
+		//env in Environment interface will be set to value fetched from properties file
+		ConfigFactory.setProperty("env", environemnt); 
+		testEnvironment = ConfigFactory.create(Environment.class);
+		String envUrl=testEnvironment.url();
+		// Open the URL
+		driver.get(envUrl);
 	
-	page = new BasePage(driver);
-}
+		page = new BasePage(driver);
+	}
 
 @AfterMethod
-public void tearDown()
-{
-	//Quitting browser
-	driver.quit();
-}
+	public void tearDown()
+	{
+		//Quitting browser
+		driver.quit();
+	}
 
 }

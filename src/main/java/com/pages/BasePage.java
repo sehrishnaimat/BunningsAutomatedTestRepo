@@ -1,15 +1,18 @@
 package com.pages;
 
+import java.util.List;
+import java.util.Random;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class BasePage extends Page
-{
+{	
 	JavascriptExecutor js = (JavascriptExecutor) driver;
+	
 	//Constructor of BasePage Class
 	public BasePage(WebDriver driver) 
 	{
@@ -34,21 +37,38 @@ public class BasePage extends Page
 	}
 
 	@Override
-	public void waitForElementPresent(WebElement element) 
+	public void scrollDown(WebElement element)
 	{
+		js.executeScript("arguments[0].scrollIntoView();",element);
+	}
+
+	@Override
+	public List<WebElement> getListOfElement(By locator) 
+	{
+		List<WebElement> element=null;
 		try 
 		{
-		wait.until(ExpectedConditions.elementToBeClickable(element));
+			element = driver.findElements(locator);  
+			return element;
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
+		return element; 
+	}	
+	
+	@Override
+	public void scrollDown(List<WebElement> element) 
+	{
+		js.executeScript("window.scrollBy(0,200)");
+	}
+	
+	public static Integer generateRandomNumber(List<WebElement> WebElement) 
+	{
+		Random r = new Random();
+		Integer randomNumber = r.nextInt(WebElement.size());
+		return randomNumber;
 	}
 
-	@Override
-	public void scrollDown(WebElement element)
-	{
-		js.executeScript("arguments[0].scrollIntoView();",element);
-	}
 }
